@@ -23,12 +23,11 @@ const Home = () => {
               <Link className="nav-link active text-uppercase fw-bold" to="/">
                 Home
               </Link>
-              <a className="nav-link text-uppercase fw-bold" href="#">
-                Experience
-              </a>
-              <a className="nav-link text-uppercase fw-bold" href="#">
-                About
-              </a>
+              <a className="nav-link text-uppercase fw-bold">Experience</a>
+              <a className="nav-link text-uppercase fw-bold">About</a>
+              <Link className="nav-link text-uppercase fw-bold" to="/news">
+                News
+              </Link>
               <Link className="nav-link text-uppercase fw-bold" to="/contact_us">
                 Contact
               </Link>
@@ -47,9 +46,9 @@ const Home = () => {
               <h4 className="fw-bolder">Hi, my name is</h4>
               <h1 className="display-1 fw-bold lh-1">Anne Sullivan</h1>
               <h2 className="fw-bolder">I build things for the web</h2>
-              <a href="#" className="btn btn-warning">
+              <Link to="/contact_us" className="btn btn-warning">
                 Get In Touch
-              </a>
+              </Link>
             </div>
           </div>
         </div>
