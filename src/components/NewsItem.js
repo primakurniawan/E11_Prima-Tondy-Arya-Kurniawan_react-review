@@ -3,10 +3,16 @@ import "./NewsItem.css";
 
 const NewsItem = ({ author, content, description, image, publishedAt, source, title }) => {
   const newContent = content ? content.replace(/\[.*?\]/g, "").replace("…", "") : content;
+  console.log(image);
   return (
     <div className={"blog-card"}>
       <div className="meta">
-        <div className="photo" style={{ backgroundImage: `url(${image})` }}></div>
+        <div
+          className="photo"
+          style={{
+            backgroundImage: `url(${image ? image : "https://i.stack.imgur.com/y9DpT.jpg"})`,
+          }}
+        ></div>
         <ul className="details">
           <li className="author">
             <a href={author}>{author}</a>

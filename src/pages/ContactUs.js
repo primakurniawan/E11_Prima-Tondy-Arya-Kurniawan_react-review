@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { addMessage } from "../store/actions";
@@ -11,9 +11,17 @@ const ContactUs = () => {
   const messageEl = useRef();
 
   const [error, setError] = useState({
-    errName: "",
-    errEmail: "",
-    errPhone: "",
+    errName: null,
+    errEmail: null,
+    errPhone: null,
+  });
+
+  const [newMessage, setNewMessage] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    nationality: "",
+    message: "",
   });
 
   const dispatch = useDispatch();
@@ -29,6 +37,7 @@ const ContactUs = () => {
     const message = messageEl.current.value;
 
     if (name === "") {
+      console.log("kosong nih name");
       setError((error) => {
         return { ...error, errName: "Full name can not be empty" };
       });
@@ -43,6 +52,8 @@ const ContactUs = () => {
     }
 
     if (email === "") {
+      console.log("kosong nih email");
+
       setError((error) => {
         return { ...error, errEmail: "Email can not be empty" };
       });
@@ -57,6 +68,8 @@ const ContactUs = () => {
     }
 
     if (phone === "") {
+      console.log("kosong nih phone");
+
       setError((error) => {
         return { ...error, errPhone: "Phone number can not be empty" };
       });
@@ -70,19 +83,21 @@ const ContactUs = () => {
       });
     }
 
-    const newMessage = {
+    setNewMessage({
       name,
       email,
       phone,
       nationality,
       message,
-    };
+    });
+  };
 
+  useEffect(() => {
     if (error.errName === "" && error.errEmail === "" && error.errPhone === "") {
       dispatch(addMessage(newMessage));
       history.push("/message");
     }
-  };
+  }, [dispatch, error, history, newMessage]);
 
   return (
     <main className="main--form">

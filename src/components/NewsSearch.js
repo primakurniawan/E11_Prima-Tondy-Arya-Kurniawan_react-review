@@ -27,7 +27,9 @@ const NewsSearch = () => {
     setNews(searchFilter.search, searchFilter.country, searchFilter.category);
   }, [searchFilter, setNews]);
 
-  const onSubmitHandler = () => {};
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="newsSearch">
       <form onSubmit={onSubmitHandler}>
